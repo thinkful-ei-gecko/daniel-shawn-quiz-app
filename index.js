@@ -72,7 +72,7 @@ function quizQuestion() {
 
       <legend>${DATASTORE[questionNumber].question}</legend>
 
-      <label class="answerOption1">This should be red
+      <label class="answerOption1">
         <input type="radio" value="${DATASTORE[questionNumber].answers[0]}" name="answer" required>
           <span>${DATASTORE[questionNumber].answers[0]}</span>
   </label>
@@ -92,16 +92,15 @@ function quizQuestion() {
                 <span>${DATASTORE[questionNumber].answers[3]}</span>
   </label>
 
-              // <button type="submit" class="submitButton">Submit</button>
+  <button type="submit" class="submitButton">Submit</button>
 
   </fieldset>
-  <button type="submit" class="submitButton">Submit</button>
   </form>
   </div>`);
 }
 
 function questionCount() {
-  questionNumber ++;
+  questionNumber++;
 }
 
 
@@ -131,14 +130,15 @@ function submitHandle() {
 
 function startQuiz() {
   $('.quiz-display').on('click', function (event) {
-    $('.quiz-display').empty();
+    $('.quiz-display').remove();
     quizQuestion();
     submitHandle();
-    // $('.quiz-display').append(quizQuestion);
+    //$('.quiz-display').append(quizQuestion);
     //$('.questionAnswerForm').css('display', 'block');
     //$('.questionNumber').text(1);
   });
 }
+
 
 function main() {
   //init();  //click handlers
