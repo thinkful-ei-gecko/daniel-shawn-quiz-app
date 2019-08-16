@@ -33,3 +33,7 @@ header {
 #quiz-start {
   width: 10%;
 }
+
+.answerOption1 {
+  color: red;
+}

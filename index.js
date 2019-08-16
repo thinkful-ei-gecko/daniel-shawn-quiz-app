@@ -65,14 +65,14 @@ let score = 0;
 
 
 function quizQuestion() {
-  //if statement
-  return `<div class="question-${questionNumber}">
-  <form>
+  //if statement //put classes?
+  $('body').append(`<div class="question-${questionNumber}">
+  <form class="answer-form">
     <fieldset>
 
       <legend>${DATASTORE[questionNumber].question}</legend>
 
-      <label class="answerOption">
+      <label class="answerOption1">This should be red
         <input type="radio" value="${DATASTORE[questionNumber].answers[0]}" name="answer" required>
           <span>${DATASTORE[questionNumber].answers[0]}</span>
   </label>
@@ -92,30 +92,49 @@ function quizQuestion() {
                 <span>${DATASTORE[questionNumber].answers[3]}</span>
   </label>
 
-              <button type="submit" class="submitButton">Submit</button>
+              // <button type="submit" class="submitButton">Submit</button>
 
   </fieldset>
+  <button type="submit" class="submitButton">Submit</button>
   </form>
-  </div>`;
+  </div>`);
+}
 
+function questionCount() {
+  questionNumber ++;
+}
+
+
+
+function submitHandle() {
+  $('.answer-form').on('submit', event => {
+    event.preventDefault();
+    let userAnswer = $('input:checked');
+    console.log(userAnswer);
+    questionCount();
+    quizQuestion(questionNumber);
+  });
 }
 
 
 
 
-function questionGenerator() {
-  $('.quiz-display').append(`
-    <h1>this is an appended question</h1>
-    $(DATASTORE[questionNumber].question}</p>
-    `);
-}
+
+// function questionGenerator() {
+//   $('.quiz-display').append(`
+//     <h1>this is an appended question</h1>
+//     $(DATASTORE[questionNumber].question}</p>
+//     `);
+// }
 
 
 
 function startQuiz() {
   $('.quiz-display').on('click', function (event) {
     $('.quiz-display').empty();
-    $('.quiz-display').append(quizQuestion);
+    quizQuestion();
+    submitHandle();
+    // $('.quiz-display').append(quizQuestion);
     //$('.questionAnswerForm').css('display', 'block');
     //$('.questionNumber').text(1);
   });
@@ -128,3 +147,10 @@ function main() {
 }
 
 $(main);
+
+//startQuiz
+//generate function-display question?
+
+//template is displaying
+
+
