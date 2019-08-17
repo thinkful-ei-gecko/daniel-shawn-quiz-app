@@ -1,0 +1,153 @@
+'use strict';
+let questionNumber = 0;
+let score = 0;
+
+function startQuiz() {
+  console.log('starting Quiz!');
+  /*this function will start the quiz when the user clicks the start button.
+  //will call functions to gen question and display score/question values.*/
+  //question number/score might not work here. 
+ 
+  $('button').click(function(){
+    generateQuestion(questionNumber);
+    displayScore(score);
+    displayQuestionCount(questionNumber);
+    displayQuestion(questionNumber);
+  });
+}
+
+function generateQuestion() {
+  console.log('generating question');
+  //if statement
+  //generates html 
+  //otherwise, calls for results
+  let question = (`<div class="question-${questionNumber}">
+  <form class="answer-form">
+    <fieldset>
+
+      <legend>${DATASTORE[questionNumber].question}</legend>
+
+      <label class="answerOption1">
+        <input type="radio" value="${DATASTORE[questionNumber].answers[0]}" name="answer" required>
+          <span>${DATASTORE[questionNumber].answers[0]}</span>
+  </label>
+
+        <label class="answerOption">
+          <input type="radio" value="${DATASTORE[questionNumber].answers[1]}" name="answer" required>
+            <span>${DATASTORE[questionNumber].answers[1]}</span>
+  </label>
+
+          <label class="answerOption">
+            <input type="radio" value="${DATASTORE[questionNumber].answers[2]}" name="answer" required>
+              <span>${DATASTORE[questionNumber].answers[2]}</span>
+  </label>
+
+            <label class="answerOption">
+              <input type="radio" value="${DATASTORE[questionNumber].answers[3]}" name="answer" required>
+                <span>${DATASTORE[questionNumber].answers[3]}</span>
+  </label>
+
+  <button type="submit" class="submitButton">Submit</button>
+
+  </fieldset>
+  </form>
+  </div>`);
+  displayQuestion(question);
+  submitQuestion();
+}
+
+function displayQuestion(question) {
+  console.log('displaying the question!');
+  $('.quiz-display').append(`${question}`);
+}
+
+function submitQuestion(){ 
+  console.log('We got us an answer... ');
+  //this function handles what happens when the user submits an answer
+  //prevent default
+  //hold the value
+  //pass the value to the check function
+  $('.answer-form').submit(function(event) {
+    event.preventDefault();
+    let userInput = $('radio:checked');
+    checkQuestion(userInput);
+  });
+}
+
+function checkQuestion(userInput) {
+  console.log('Checking questions...');
+  //checks the user selected answer against the correct answer in the object.
+  let feedbk = userInput === DATASTORE[questionNumber].correctAnswer ? true: false;
+  generateFeedback(feedbk);
+
+}
+
+function generateFeedback(feedbk) {
+  console.log('Are you right???');
+  if (feedbk === true) {
+    console.log('Yes, you are!');
+    scoreUpdate(); //to increment the score
+    $('.quiz-display').append('eyy lmao <button class ="next">next</button>');
+  }
+  if (feedbk === false) {
+    console.log('WRONG');
+    $('.quiz-display').append('<p>This ain\'t it, chief.\'</p> <button class ="next">next</button>');
+  }
+  nextQuestion();
+}
+
+function nextQuestion() {
+  console.log('NEXT!!');
+  $('.next').click(function() {
+  //event handler for next button on feedback view. 
+    questionUpdate();
+    //calls generate question. 
+    generateQuestion();
+    displayQuestion();
+  });
+}
+
+function questionUpdate() {
+  console.log('updating question!');
+  questionNumber += 1;
+  
+}
+
+function displayQuestionCount() {
+  console.log('displaying question!');
+  $('#question').text('(${questionNumber} + 1)) /10}');
+}
+
+function scoreUpdate() {
+  console.log('SCOREEEEE!');
+  score ++;
+  displayScore();
+}
+
+function displayScore() {
+  console.log('Put it on the board!');
+  $('#score').text(`${score}`);
+}
+
+function generateResult() {
+  console.log('wrap it up... ')
+  ('.quiz-display').append('<h1>END OF QUIZ</h1>');
+
+}
+
+//restartQuiz() {
+//this might not be necessary. Might be able to use the quizstart. 
+//reset questionNumber to 0
+//reset score to 0
+//call the original page (or delete dom elements added by js)
+
+function init() {
+  //this function calls all the event handlers at the start of the document. 
+  startQuiz();
+}
+
+$(init);
+/*startquiz() => createQuiz() => submitQuestion()=>
+  checkQuestion()=>Generatefeeback()/updateScore()=>click(nextButton)=>QuestionUpdate() => Questiondisplay()
+
+  rinse and repeat untill question10, then: => display(results)=>on click => reset quiz?*/

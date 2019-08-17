@@ -1,18 +1,19 @@
-/* eslint-disable strict */
+'use strict';
 
-/*
+let icon = 4;
+let alt = 3;
 
-// These are the questions and answers for the Quiz
+
 const DATASTORE = [
-    {
-      question: 'The "spiritual", if not the official, midpint of the Appalachian Trail is located where?',
-      answers: [
-        'Waynesboro, VA',
-        'Gatliinburg, TN',
-        "Harper's Ferry, WV",
-        "Pine Furnace State Park, PA"
-      ],
-    correctAnswer: "Harper's Ferry, WV",
+  {
+    question: 'The "spiritual", if not the official, midpint of the Appalachian Trail is located where?',
+    answers: [
+      'Waynesboro, VA',
+      'Gatliinburg, TN',
+      'Harper\'s Ferry, WV',
+      'Pine Furnace State Park, PA'
+    ],
+    correctAnswer: 'Harper\'s Ferry, WV',
     icon: icon,
     alt: alt
   },
@@ -106,53 +107,53 @@ const DATASTORE = [
     ],
     correctAnswer: 'The Long Trail'
   },
-]
-
-
-const datastore = [
-  {
-    question: 'question1',
-    answers: [
-      'A',
-      'B',
-      'C',
-      'D'
-    ],
-    correctAnswer: 'A',
-  },
-  {
-    question: 'question2',
-    answers: [
-      'A',
-      'B',
-      'C',
-      'D'
-    ],
-    correctAnswer: 'B',
-  },
-  {
-    question: 'question3',
-    answers: [
-      'A',
-      'B',
-      'C',
-      'D'
-    ],
-    correctAnswer: 'C',
-  },
-  {
-    question: 'question4',
-    answers: [
-      'A',
-      'B',
-      'C',
-      'D'
-    ],
-    correctAnswer: 'D',
-  }
-
-  //more questions
-
 ];
 
-*/
+
+// const datastore = [
+//   {
+//     question: 'question1',
+//     answers: [
+//       'A',
+//       'B',
+//       'C',
+//       'D'
+//     ],
+//     correctAnswer: 'A',
+//   },
+//   {
+//     question: 'question2',
+//     answers: [
+//       'A',
+//       'B',
+//       'C',
+//       'D'
+//     ],
+//     correctAnswer: 'B',
+//   },
+//   {
+//     question: 'question3',
+//     answers: [
+//       'A',
+//       'B',
+//       'C',
+//       'D'
+//     ],
+//     correctAnswer: 'C',
+//   },
+//   {
+//     question: 'question4',
+//     answers: [
+//       'A',
+//       'B',
+//       'C',
+//       'D'
+//     ],
+//     correctAnswer: 'D',
+//   }
+
+//   //more questions
+
+// ];
+
+// */
