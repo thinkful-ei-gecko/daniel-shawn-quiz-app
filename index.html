@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica|IM+Fell+Double+Pica+SC|IM+Fell+English|Noto+Serif+KR|Patrick+Hand+SC|Rye&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
   <title>Quiz App</title>
 </head>
@@ -13,10 +14,10 @@
   <nav>
     <div class="logo">
       <a href="index.html">
-        <img src="image" alt="alt">
+        <img src="https://i.etsystatic.com/14565531/r/il/b03619/1229258222/il_794xN.1229258222_a0cx.jpg" alt="Appalachian Trail Logo">
       </a>
     </div>
-    <div class="scoreboard">
+    <div aria-live="polite" class="scoreboard">
       <span>
         <p id="score">Score:</p>
       </span>
@@ -29,20 +30,19 @@
 
 
   <!-- //question page -->
-  <section class="intro-screen">
+  <section class="intro-screen" aria-live="polite">
     <header>
-      <h1>This is a quiz</h1>
+      <h1>The Appalachian Trail Quiz</h1>
     </header>
     <div class="quiz-text">
-      <p>This is a quiz about things and stuff. Here's some Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Eaque molestias minima eligendi officia? Enim aspernatur
-        laborum aperiam ea, inventore saepe placeat, accusantium cum repellendus dignissimos excepturi!
-        Ducimus placeat maiores necessitatibus!
+      <p>The Appalachian Trail spans roughly 2200 miles, from Georgia all the way to Maine. 
+        Thousands attempt to complete the trail each year, but few succeed.  
       </p>
-      <button id="quiz-start">Start Quiz</button>
+      <p>Do you have what it takes to make it to Maine?</p>
+      <button id="quiz-start">Hit the trail!</button>
     </div>
   </section>
-  <section class="quiz-display">
+  <section class="quiz-display" aria-live="polite">
   </section>
 
 

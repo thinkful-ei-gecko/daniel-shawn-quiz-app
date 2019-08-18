@@ -10,6 +10,7 @@ function startQuiz() {
  
   $('button').click(function(){
     generateQuestion(questionNumber);
+    showScoreboard();
     displayScore(score);
     displayQuestionCount(questionNumber);
     hideIntro();
@@ -157,8 +158,11 @@ function showIntro () {
   $('.intro-screen').css('display', 'initial')
 }
 
+function showScoreboard() {
+  $('.scoreboard').css('display', 'block');
+}
 function hideScoreboard() {
-  $('.scoreboard').css('display', 'none')
+  $('.scoreboard').css('display', 'initial')
 }
 function resetScore () {
   console.log('reset score!')
