@@ -12,22 +12,23 @@ function startQuiz() {
     generateQuestion(questionNumber);
     displayScore(score);
     displayQuestionCount(questionNumber);
-    displayQuestion(questionNumber);
+    hideIntro();
+    showQuiz();
   });
 }
 
 function generateQuestion() {
   console.log('generating question');
-  //if statement
+  if (questionNumber < DATASTORE.length) {
   //generates html 
   //otherwise, calls for results
-  let question = (`<div class="question-${questionNumber}">
+    let question = (`<div class="question-${questionNumber}">
   <form class="answer-form">
     <fieldset>
 
       <legend>${DATASTORE[questionNumber].question}</legend>
 
-      <label class="answerOption1">
+      <label class="answerOption">
         <input type="radio" value="${DATASTORE[questionNumber].answers[0]}" name="answer" required>
           <span>${DATASTORE[questionNumber].answers[0]}</span>
   </label>
@@ -52,8 +53,13 @@ function generateQuestion() {
   </fieldset>
   </form>
   </div>`);
-  displayQuestion(question);
-  submitQuestion();
+    displayQuestion(question);
+    submitQuestion();
+  }
+  else {
+    generateResult();
+    restartQuiz();
+  }
 }
 
 function displayQuestion(question) {
@@ -62,22 +68,25 @@ function displayQuestion(question) {
 }
 
 function submitQuestion(){ 
-  console.log('We got us an answer... ');
   //this function handles what happens when the user submits an answer
   //prevent default
   //hold the value
   //pass the value to the check function
   $('.answer-form').submit(function(event) {
     event.preventDefault();
-    let userInput = $('radio:checked');
-    checkQuestion(userInput);
+    let userInput = $('input:checked');
+    let selection = userInput.val();
+    console.log(selection);
+    clearDisplay();
+    checkQuestion(selection);
   });
 }
 
 function checkQuestion(userInput) {
   console.log('Checking questions...');
   //checks the user selected answer against the correct answer in the object.
-  let feedbk = userInput === DATASTORE[questionNumber].correctAnswer ? true: false;
+  let feedbk = userInput === (DATASTORE[questionNumber].correctAnswer) ? true: false;
+  console.log(feedbk);
   generateFeedback(feedbk);
 
 }
@@ -101,9 +110,10 @@ function nextQuestion() {
   $('.next').click(function() {
   //event handler for next button on feedback view. 
     questionUpdate();
-    //calls generate question. 
+    displayQuestionCount();
+    //calls generate question.
+    clearDisplay(); 
     generateQuestion();
-    displayQuestion();
   });
 }
 
@@ -115,7 +125,7 @@ function questionUpdate() {
 
 function displayQuestionCount() {
   console.log('displaying question!');
-  $('#question').text('(${questionNumber} + 1)) /10}');
+  $('#question').text(`Question: ${questionNumber +1} / 10`);
 }
 
 function scoreUpdate() {
@@ -126,16 +136,58 @@ function scoreUpdate() {
 
 function displayScore() {
   console.log('Put it on the board!');
-  $('#score').text(`${score}`);
+  $('#score').text(` Score: ${score}`);
 }
 
 function generateResult() {
   console.log('wrap it up... ')
-  ('.quiz-display').append('<h1>END OF QUIZ</h1>');
+  $('.quiz-display').append('<h1>END OF QUIZ</h1>');
 
 }
 
-//restartQuiz() {
+function hideIntro() {
+  $('.intro-screen').css('display', 'none');
+}
+
+function clearDisplay(){
+  $('.quiz-display').empty();
+}
+
+function showIntro () {
+  $('.intro-screen').css('display', 'initial')
+}
+
+function hideScoreboard() {
+  $('.scoreboard').css('display', 'none')
+}
+function resetScore () {
+  console.log('reset score!')
+  score = 0;
+}
+
+function showQuiz() {
+  $('.quiz-display').css('display', 'block');
+}
+
+function hideQuiz() {
+  $('.quiz-display').css('display', 'none');
+}
+
+function resetQuestion() {
+  questionNumber = 0;
+}
+
+function restartQuiz() {
+  $('.reset-button').click(function() {
+    clearDisplay();
+    hideQuiz();
+    resetScore();
+    resetQuestion();
+    hideScoreboard();
+    showIntro();
+  })
+}
+  
 //this might not be necessary. Might be able to use the quizstart. 
 //reset questionNumber to 0
 //reset score to 0
@@ -150,4 +202,9 @@ $(init);
 /*startquiz() => createQuiz() => submitQuestion()=>
   checkQuestion()=>Generatefeeback()/updateScore()=>click(nextButton)=>QuestionUpdate() => Questiondisplay()
 
-  rinse and repeat untill question10, then: => display(results)=>on click => reset quiz?*/
+  rinse and repeat until question10, then: => display(results)=>on click => reset quiz?*/
+
+// 8/18: Quiz is working through the datastore, but need to make results page. 
+//Aria live should be placed on the parent container of each area that updates. Maybe refactor html?
+//quiz is appending for each question, but it is displaying like a list. 
+//restart quiz function might change css for initial page, and call functions to reset the counters?
