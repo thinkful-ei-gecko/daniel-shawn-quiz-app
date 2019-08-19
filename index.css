@@ -11,6 +11,35 @@ body {
   background-size: cover; 
 }
 
+
+/* mobile size screen 320px 
+center all elements and block them up in a column*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* tablet size screen 780px
+quiz display centered, breathing room for header elements. */
+
+
+
+
+
+
+
+
+/* desktop sizes */
+
 .logo img {
   width: 200px;
   height: 200px;
@@ -32,7 +61,7 @@ nav {
   margin-right: auto;
   font-family: 'Noto Serif KR', serif;
   font-weight: 600;
-  background-color: rgba(0,0,0,0.0);
+  background-color: rgba(0,0,0,0.4);
   z-index: 1;
   border-radius: 5px;
   font-size: 1.2em;
