@@ -30,7 +30,7 @@ function generateQuestion() {
       <legend>${DATASTORE[questionNumber].question}</legend>
 
       <label class="answerOption">
-        <input type="radio" value="${DATASTORE[questionNumber].answers[0]}" name="answer" required>
+        <input  type="radio" value="${DATASTORE[questionNumber].answers[0]}" name="answer" required>
           <span>${DATASTORE[questionNumber].answers[0]}</span>
   </label>
 
@@ -45,7 +45,7 @@ function generateQuestion() {
   </label>
 
             <label class="answerOption">
-              <input type="radio" value="${DATASTORE[questionNumber].answers[3]}" name="answer" required>
+              <input  type="radio" value="${DATASTORE[questionNumber].answers[3]}" name="answer" required>
                 <span>${DATASTORE[questionNumber].answers[3]}</span>
   </label>
 
@@ -97,11 +97,24 @@ function generateFeedback(feedbk) {
   if (feedbk === true) {
     console.log('Yes, you are!');
     scoreUpdate(); //to increment the score
-    $('.quiz-display').append('<h2>Correct!</h2> <img src= "picture"><p>Feedback goes here</p><button class= "next">Next</button>');
+    $('.quiz-display').append(`<header>
+    <h2>That is correct!</h2>
+  </header>
+  <div class="quiz-text">
+    <p>${DATASTORE[questionNumber].funFact}</p>
+  </div>
+  <button class= "next">Next</button>`);
   }
   if (feedbk === false) {
     console.log('WRONG');
-    $('.quiz-display').append('<h2>Incorrect!</h2><img src= "picture"><p>Feedback goes here</p><button class= "next">Next</button>');
+    $('.quiz-display').append(`<header>
+    <h2>That is incorrect!</h2>
+  </header>
+  <div class="quiz-text">
+  <h3>The correct answer is: ${DATASTORE[questionNumber].correctAnswer}</h3>
+    <p>${DATASTORE[questionNumber].funFact}</p>
+  </div>
+  <button class= "next">Next</button>`);
   }
   nextQuestion();
 }
@@ -150,14 +163,34 @@ function displayScore() {
 function generateResult() {
   console.log('wrap it up... ')
   if (score >= 8) {
-    $('.quiz-display').append('<h2>You are a real thru hiker!</h2><img src= " "><p>You made it to Maine...</p>\' <button class="reset-button">Play Again</button>');
+    $('.quiz-display').append(`<header>
+    <h2>${resultsMessage.winHead}</h2>
+  </header><div class="quiz-text"><p>${resultsMessage.winText}</p>
+    <button class="reset-button">Play Again</button>
+  </div>`);
   }
+
   if (score < 8 && score >= 4) {
-    $('.quiz-display').append('<h2>You are a section hiker.</h2><p>You\'ve got a few more hills to climb before you get your trail legs!.</p><button class="reset-button">Play Again</button>');
+    $('.quiz-display').append(`<header>
+    <h2>${resultsMessage.midHead}</h2>
+  </header>
+  <div class="quiz-text">
+    <p>${resultsMessage.midText}  
+    </p>
+    <button class="reset-button">Play Again</button>
+  </div>`);
   }
+
   if (score < 4) {
-    $('.quiz-display').append('<h2>You are a day hiker. A real weekend warrior.</h2><p></p><button class="reset-button">Play Again</button>');
+    $('.quiz-display').append(`<header>
+    <h2>${resultsMessage.lossHead}</h2>
+  </header>
+  <div class="quiz-text">
+    <p>${resultsMessage.lossText}</p>
+    <button class="reset-button">Play Again</button>
+  </div>`);
   }
+
   restartQuiz();
 }
 

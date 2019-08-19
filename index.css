@@ -1,102 +1,114 @@
- /* maybe a dark offset for the quiz display? Like an overlay effect? */
-
-
 * {
   box-sizing: border-box;
   text-decoration: none;
+  color: white; 
+  list-style-type: none;
+}
+
+.hide {
+  display: none;
+}
+
+
+fieldset{
+  border: none;
+}
+
+legend{
+  padding-bottom: 10px;
 }
 
 body {
-  background: url(https://lh3.googleusercontent.com/mHBDRdzcAL4bPCKsIZMq74R2pLjjf-m2pS1R0lxXi3kJCCCjhxElyv_UCR96eB8OvN_oxY4yKZwLH5l52oCWWSKmE2WoJD_pbTLRwSAfY2xL4Gyc1AvEuIKDB-1EGBRDNaXSbi-iodnkFVmOn17AIZoUAkqoiZlwC19E5ftUXYVZb56ik_bdE33Jdxkv0ORL53nrz1WL_tP9awYJtRrjLFg1vaJNxsRuwSzj8k6hb74azPXe7UG3pJwaRqYOYmyw-bH-ItkZbGz0pF5gyPKNcwXtzpDPx_yHNvXzZL8EN-PZP1HN8uRGcQLNBg1dOQHOQHQPB2vaAlwBW1-Q5JEtqwyaOvZf78Nkfktsv0xUcU1YTol-cmnLYt-DYXKfHAzcihJCrXmyeu1KjJB4vObmm0JMZX9lKDPkDlBXbJGeuGZpcVFW9p5BULnHkqxDTHUHsASEwyTLBGrLMP3JOrUwTZ6RQtu7xLp5GUK99bEice1yicSSK9G_tVricBKXBxpbwyq8uZO78ib4vZq0WfgQYF_MdyIBK-7FsqeZ1HzkAbMy8DMJu3qD_4OeDsXq-g1iW8aLuRtJTs6CvdJgWB3Lw8Cno6Q75myMkf7Ibno6mBdDY2t6fCjI9Z3KIaBW2_e5qVYIyt2if2OIKXGjHcLPwOt1jlrxIJo=w2298-h1716-no) no-repeat;
-  background-size: cover; 
+  background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5) ), url(https://lh3.googleusercontent.com/mHBDRdzcAL4bPCKsIZMq74R2pLjjf-m2pS1R0lxXi3kJCCCjhxElyv_UCR96eB8OvN_oxY4yKZwLH5l52oCWWSKmE2WoJD_pbTLRwSAfY2xL4Gyc1AvEuIKDB-1EGBRDNaXSbi-iodnkFVmOn17AIZoUAkqoiZlwC19E5ftUXYVZb56ik_bdE33Jdxkv0ORL53nrz1WL_tP9awYJtRrjLFg1vaJNxsRuwSzj8k6hb74azPXe7UG3pJwaRqYOYmyw-bH-ItkZbGz0pF5gyPKNcwXtzpDPx_yHNvXzZL8EN-PZP1HN8uRGcQLNBg1dOQHOQHQPB2vaAlwBW1-Q5JEtqwyaOvZf78Nkfktsv0xUcU1YTol-cmnLYt-DYXKfHAzcihJCrXmyeu1KjJB4vObmm0JMZX9lKDPkDlBXbJGeuGZpcVFW9p5BULnHkqxDTHUHsASEwyTLBGrLMP3JOrUwTZ6RQtu7xLp5GUK99bEice1yicSSK9G_tVricBKXBxpbwyq8uZO78ib4vZq0WfgQYF_MdyIBK-7FsqeZ1HzkAbMy8DMJu3qD_4OeDsXq-g1iW8aLuRtJTs6CvdJgWB3Lw8Cno6Q75myMkf7Ibno6mBdDY2t6fCjI9Z3KIaBW2_e5qVYIyt2if2OIKXGjHcLPwOt1jlrxIJo=w2298-h1716-no) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
+/* 
+vh viewport height with 100%
+vw viewport width with x%
+*/
 
-/* mobile size screen 320px 
-center all elements and block them up in a column*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* tablet size screen 780px
-quiz display centered, breathing room for header elements. */
-
-
-
-
-
-
-
-
-/* desktop sizes */
-
-.logo img {
-  width: 200px;
-  height: 200px;
+img.logo {
+  width: 25%;
+  height: 25%;
   border-radius: 50%;
+  opacity: 0.7;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
 }
+
+/* .logo-score {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} */
+
 nav {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 10vh;
+  /* align-items: center; */
   justify-content: space-between;
-  padding: 10px 10px 10px 10px;
 }
 
-.intro-screen {
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
-  width: 60%;
+.play-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  padding: 20px;
   margin-left: auto;
   margin-right: auto;
-  font-family: 'Noto Serif KR', serif;
-  font-weight: 600;
+  width: 90%;
   background-color: rgba(0,0,0,0.4);
   z-index: 1;
   border-radius: 5px;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
-.quiz-display {
+/* .play-box h1 {
+  padding-top: 10px;
+  font-size: 1.2em;
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: auto;
+} */
+
+/* .quiz-display {
   display: block;
   width: 60%;
   margin-left: auto;
   margin-right: auto;
-}
+} */
 
-header {
+.play-box header h1 {
   text-align: center;
   font-family: 'Rye', cursive;
+  font-size: 1.1em;
 }
 
-h1 {
-  margin-bottom: 0;
-  margin-top: 0;
-}
-.quiz-text {
+/* .quiz-text {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   width: auto;
-}
+  color: white;
+} */
 
-#quiz-start {
+.button {
   /* width: 10%; */
-  height: 75px;
-  width: 150px;
+  padding: 10px;
+  height: auto;
+  width: auto;
   font-family: 'Noto Serif KR', serif;
-  font-size: 20px;
+  font-size: 1em;
   text-transform: uppercase;
   background-color: #33191d ;
   color: white;
@@ -106,9 +118,6 @@ h1 {
   display: none;
 }
 
-.answerOption1 {
-  color: red;
-}
 
 label {
   display: block;
@@ -120,5 +129,21 @@ label {
 input {
   width: 20px;
 }
+
+
+
+
+/* 
+@media screen and (min-width: 500px) and (max-width: 720px) { 
+ }
+
+ 
+@media screen and (min-width: 800px) {
+} 
+*/
+
+
+
+
 
 
