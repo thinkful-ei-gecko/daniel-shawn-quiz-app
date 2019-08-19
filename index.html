@@ -10,40 +10,62 @@
 </head>
 
 <body>
+
   <nav>
     <div class="logo">
-      <a href="index.html">
-        <img src="image" alt="alt">
-      </a>
+      <img id="reset-mountain" class="mountain" src="/images/mountains.png" alt="click to restart the quiz">
     </div>
     <div class="scoreboard">
-      <span>
-        <p>Score:</p>
-      </span>
-      <span>
-        <p>Question:</p>
-      </span>
+      <ul>
+        <li>Question: <span class="questionNumber"></span> / <span class="totalQuestions"></span></li>
+        <li>Score: <span class="score">0</span></li>
+      </ul>
     </div>
   </nav>
 
 
+  <main>
 
-  <!-- //question page -->
-  <section class="quiz-display">
-    <header>
-      <h1>This is a quiz</h1>
-    </header>
-    <div class="quiz-text">
-      <p>This is a quiz about things and stuff. Here's some Lorem ipsum dolor sit amet
-        consectetur adipisicing elit. Eaque molestias minima eligendi officia? Enim aspernatur
-        laborum aperiam ea, inventore saepe placeat, accusantium cum repellendus dignissimos excepturi!
-        Ducimus placeat maiores necessitatibus!
-      </p>
-      <button id="quiz-start">Start Quiz</button>
-    </div>
-  </section>
+    <!-- Welcome & start quiz button -->
+    <!-- Visable by default -->
+    <section class="start-display play-box">
+      <header>
+        <h1>This is a quiz</h1>
+      </header>
+      <div class="start-text">
+        <p>This is a quiz about things and stuff.</p>
+        <button id="quiz-start">Start Quiz</button>
+      </div>
+    </section>
+
+    <!-- Correct/Incorrect response -->
+    <!-- Hidden by default -->
+    <section id="show-answer" class="hide play-box">
+      <header>
+        <h1 id="correct-incorrect">
+          <!-- text appened here -->
+        </h1>
+      </header>
+      <div id="answer-text">
+        <!-- text appened here -->
+      </div>
+      <button id="next-question">Next</button>
+    </section>
+
+    <section id="score-screen" class="hide play-box">
+      <header>
+        <div id="score-percentage">
+          <!-- text appened here -->
+          <div>
+      </header>
+      <div id="score-text">
+        <!-- text appened here -->
+      </div>
+      <button id="reset-button">Next</button>
+    </section>
 
 
+  </main>
 
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
