@@ -1,8 +1,16 @@
 * {
   box-sizing: border-box;
   text-decoration: none;
-  color: white; 
+  color: white;
   list-style-type: none;
+  font-family: "Noto Serif KR", serif;
+}
+
+.play-box header h1 {
+  text-align: center;
+  font-family: "Rye", cursive;
+  font-size: 1.35em;
+  color: gold;
 }
 
 h2 {
@@ -10,12 +18,12 @@ h2 {
   margin-bottom: 10px;
 }
 
-h3{
+h3 {
   font-size: 1em;
-  color: red;
+  color: rgb(193, 59, 59);
 }
 
-p{
+.quiz-text {
   margin-top: 10px;
 }
 
@@ -23,28 +31,25 @@ p{
   display: none;
 }
 
-fieldset{
+fieldset {
   border: none;
 }
 
-
-
-legend{
+legend {
+  color: gold;
   padding-bottom: 10px;
+  font-weight: bold;
 }
 
 body {
-  background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.5) ), url(https://lh3.googleusercontent.com/mHBDRdzcAL4bPCKsIZMq74R2pLjjf-m2pS1R0lxXi3kJCCCjhxElyv_UCR96eB8OvN_oxY4yKZwLH5l52oCWWSKmE2WoJD_pbTLRwSAfY2xL4Gyc1AvEuIKDB-1EGBRDNaXSbi-iodnkFVmOn17AIZoUAkqoiZlwC19E5ftUXYVZb56ik_bdE33Jdxkv0ORL53nrz1WL_tP9awYJtRrjLFg1vaJNxsRuwSzj8k6hb74azPXe7UG3pJwaRqYOYmyw-bH-ItkZbGz0pF5gyPKNcwXtzpDPx_yHNvXzZL8EN-PZP1HN8uRGcQLNBg1dOQHOQHQPB2vaAlwBW1-Q5JEtqwyaOvZf78Nkfktsv0xUcU1YTol-cmnLYt-DYXKfHAzcihJCrXmyeu1KjJB4vObmm0JMZX9lKDPkDlBXbJGeuGZpcVFW9p5BULnHkqxDTHUHsASEwyTLBGrLMP3JOrUwTZ6RQtu7xLp5GUK99bEice1yicSSK9G_tVricBKXBxpbwyq8uZO78ib4vZq0WfgQYF_MdyIBK-7FsqeZ1HzkAbMy8DMJu3qD_4OeDsXq-g1iW8aLuRtJTs6CvdJgWB3Lw8Cno6Q75myMkf7Ibno6mBdDY2t6fCjI9Z3KIaBW2_e5qVYIyt2if2OIKXGjHcLPwOt1jlrxIJo=w2298-h1716-no) no-repeat center center fixed; 
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(https://lh3.googleusercontent.com/mHBDRdzcAL4bPCKsIZMq74R2pLjjf-m2pS1R0lxXi3kJCCCjhxElyv_UCR96eB8OvN_oxY4yKZwLH5l52oCWWSKmE2WoJD_pbTLRwSAfY2xL4Gyc1AvEuIKDB-1EGBRDNaXSbi-iodnkFVmOn17AIZoUAkqoiZlwC19E5ftUXYVZb56ik_bdE33Jdxkv0ORL53nrz1WL_tP9awYJtRrjLFg1vaJNxsRuwSzj8k6hb74azPXe7UG3pJwaRqYOYmyw-bH-ItkZbGz0pF5gyPKNcwXtzpDPx_yHNvXzZL8EN-PZP1HN8uRGcQLNBg1dOQHOQHQPB2vaAlwBW1-Q5JEtqwyaOvZf78Nkfktsv0xUcU1YTol-cmnLYt-DYXKfHAzcihJCrXmyeu1KjJB4vObmm0JMZX9lKDPkDlBXbJGeuGZpcVFW9p5BULnHkqxDTHUHsASEwyTLBGrLMP3JOrUwTZ6RQtu7xLp5GUK99bEice1yicSSK9G_tVricBKXBxpbwyq8uZO78ib4vZq0WfgQYF_MdyIBK-7FsqeZ1HzkAbMy8DMJu3qD_4OeDsXq-g1iW8aLuRtJTs6CvdJgWB3Lw8Cno6Q75myMkf7Ibno6mBdDY2t6fCjI9Z3KIaBW2_e5qVYIyt2if2OIKXGjHcLPwOt1jlrxIJo=w2298-h1716-no)
+      no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-
-/* 
-vh viewport height with 100%
-vw viewport width with x%
-*/
 
 img.logo {
   width: 100px;
@@ -58,76 +63,49 @@ nav {
 }
 
 nav.logo-score {
-  width: 100%; 
-  display:flex; 
-  flex-direction: column; 
-  align-items: center; }
-
-.play-box {
-  margin-top: 50px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 10px;
+}
+
+.play-box {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
   padding-top: 30px;
   margin-left: auto;
   margin-right: auto;
   width: 90%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
   border-radius: 5px;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 
-/* .play-box h1 {
-  padding-top: 10px;
-  font-size: 1.2em;
-  font-family: 'Noto Serif KR', serif;
-  font-weight: 600;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
-/* .quiz-display {
-  display: block;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
-.play-box header h1 {
-  text-align: center;
-  font-family: 'Rye', cursive;
-  font-size: 1.1em;
+.quiz-display {
+  display: none;
 }
-
-/* .quiz-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  width: auto;
-  color: white;
-} */
 
 #quiz-start {
   padding: 10px;
   height: auto;
   width: auto;
-  font-family: 'Noto Serif KR', serif;
+  font-family: "Noto Serif KR", serif;
   font-size: 1em;
   text-transform: uppercase;
-  background-color: #33191d ;
+  background-color: #33191d;
   color: white;
 }
 
-button{
+button {
   display: block;
   height: 50px;
   width: 100%;
   font-size: 1em;
-  background-color: green;
+  background-color: #01480f;
   border: 1px solid white;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -138,7 +116,6 @@ button{
 .scoreboard {
   display: none;
 }
-
 
 label {
   display: block;
@@ -153,24 +130,173 @@ label {
   word-wrap: break-word;
 }
 
-input {
-  width: 20px;
+label:hover,
+label:focus {
+  background-color: #af6438;
 }
 
+input {
+  margin-right: 6px;
+  display: inline-block;
+  vertical-align: middle;
+}
 
+@media screen and (min-width: 450px) and (max-width: 800px) {
+  /*TABLET*/
 
+  input {
+    margin-right: 15px;
+    display: inline-block;
+    vertical-align: middle;
+  }
 
-/* 
-@media screen and (min-width: 500px) and (max-width: 720px) { 
- }
+  legend {
+    padding-bottom: 25px;
+    font-weight: bold;
+    color: gold;
+  }
 
- 
+  button {
+    display: block;
+    height: 50px;
+    width: 100%;
+    font-size: 1em;
+    background-color: #01480f;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    display: inline-block;
+  }
+
+  nav.logo-score {
+    width: 100%;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .scoreboard {
+    font-size: 1.3em;
+  }
+
+  label {
+    display: block;
+    height: 50px;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding-top: 14px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+    word-wrap: break-word;
+  }
+
+  img.logo {
+    height: 150px;
+    width: 150px;
+  }
+
+  .play-box {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    border-radius: 5px;
+    font-size: 1.2em;
+  }
+
+  .quiz-display {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 800px) {
-} 
-*/
+  /*DESKTOP*/
 
+  input {
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: middle;
+  }
 
+  legend {
+    padding-bottom: 25px;
+    font-weight: bold;
+    color: gold;
+  }
 
+  button {
+    display: block;
+    height: 50px;
+    width: 100%;
+    font-size: 1em;
+    background-color: #01480f;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+  }
 
+  img.logo {
+    height: 150px;
+    width: 150px;
+  }
 
+  nav.logo-score {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 50px;
+  }
 
+  .scoreboard {
+    font-size: 1.4em;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+  }
+
+  .play-box {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+    border-radius: 5px;
+    font-size: 1.2em;
+  }
+
+  .quiz-display {
+    display: none;
+  }
+}

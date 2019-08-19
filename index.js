@@ -1,156 +1,231 @@
-/* eslint-disable quotes */
+/* eslint-disable indent */
+/* eslint-disable no-console */
 /* eslint-disable no-undef */
-/* eslint-disable strict */
-
-
-//function: start quiz button
-
-//variable: question counter
-//variable: score
-
-//function: generate question from counter, return counter++
-
-
-const DATASTORE = [
-  {
-    question: 'question1',
-    answers: [
-      'A',
-      'B',
-      'C',
-      'D'
-    ],
-    correctAnswer: 'A',
-  },
-  {
-    question: 'question2',
-    answers: [
-      'A',
-      'B',
-      'C',
-      'D'
-    ],
-    correctAnswer: 'B',
-  },
-  {
-    question: 'question3',
-    answers: [
-      'A',
-      'B',
-      'C',
-      'D'
-    ],
-    correctAnswer: 'C',
-  },
-  {
-    question: 'question4',
-    answers: [
-      'A',
-      'B',
-      'C',
-      'D'
-    ],
-    correctAnswer: 'D',
-  }
-
-  //more questions
-
-];
-
-
-
+// eslint-disable-next-line quotes
+"use strict";
 
 let questionNumber = 0;
 let score = 0;
 
+function startQuiz() {
+  $("button").click(function() {
+    generateQuestion(questionNumber);
+    showScoreboard();
+    displayScore(score);
+    displayQuestionCount(questionNumber);
+    hideIntro();
+    showQuiz();
+  });
+}
 
-function quizQuestion() {
-  //if statement //put classes?
-  $('body').append(`<div class="question-${questionNumber} question">
+function generateQuestion() {
+  if (questionNumber < DATASTORE.length) {
+    let question = `<div class="question-${questionNumber}">
   <form class="answer-form">
     <fieldset>
 
       <legend>${DATASTORE[questionNumber].question}</legend>
 
-      <label class="answerOption1">
-        <input tabindex="0" "type="radio" value="${DATASTORE[questionNumber].answers[0]}" name="answer" required>
+      <label class="answerOption">
+        <input  type="radio" value="${
+          DATASTORE[questionNumber].answers[0]
+        }" name="answer" required>
           <span>${DATASTORE[questionNumber].answers[0]}</span>
   </label>
 
         <label class="answerOption">
-          <input tabindex="1" type="radio" value="${DATASTORE[questionNumber].answers[1]}" name="answer" required>
+          <input type="radio" value="${
+            DATASTORE[questionNumber].answers[1]
+          }" name="answer" required>
             <span>${DATASTORE[questionNumber].answers[1]}</span>
   </label>
 
           <label class="answerOption">
-            <input tabindex="2" type="radio" value="${DATASTORE[questionNumber].answers[2]}" name="answer" required>
+            <input type="radio" value="${
+              DATASTORE[questionNumber].answers[2]
+            }" name="answer" required>
               <span>${DATASTORE[questionNumber].answers[2]}</span>
   </label>
 
             <label class="answerOption">
-              <input tabindex="3" type="radio" value="${DATASTORE[questionNumber].answers[3]}" name="answer" required>
+              <input  type="radio" value="${
+                DATASTORE[questionNumber].answers[3]
+              }" name="answer" required>
                 <span>${DATASTORE[questionNumber].answers[3]}</span>
   </label>
 
-  <button tab index = "4" type="submit" class="button">Submit</button>
+  <button type="submit" class="submitButton">Submit</button>
 
   </fieldset>
   </form>
-  </div>`);
+  </div>`;
+    displayQuestion(question);
+    submitQuestion();
+  } else {
+    generateResult();
+    restartQuiz();
+  }
 }
 
-function questionCount() {
-  questionNumber++;
+function displayQuestion(question) {
+  console.log("displaying the question!");
+  $(".quiz-display").append(`${question}`);
 }
 
-
-
-function submitHandle() {
-  $('.answer-form').on('submit', event => {
+function submitQuestion() {
+  $(".answer-form").submit(function(event) {
     event.preventDefault();
-    let userAnswer = $('input:checked');
-    console.log(userAnswer);
-    questionCount();
-    quizQuestion(questionNumber);
+    let userInput = $("input:checked");
+    let selection = userInput.val();
+    clearDisplay();
+    checkQuestion(selection);
   });
 }
 
+function checkQuestion(userInput) {
+  let feedbk =
+    userInput === DATASTORE[questionNumber].correctAnswer ? true : false;
+  generateFeedback(feedbk);
+}
 
+function generateFeedback(feedbk) {
+  if (feedbk === true) {
+    scoreUpdate();
+    $(".quiz-display").append(`<header>
+    <h2>That is correct!</h2>
+  </header>
+  <div class="quiz-text">
+    <p>${DATASTORE[questionNumber].funFact}</p>
+  </div>
+  <button class= "next">Next</button>`);
+  }
+  if (feedbk === false) {
+    $(".quiz-display").append(`<header>
+    <h2>That is incorrect!</h2>
+  </header>
+  <div class="quiz-text">
+  <h3>The correct answer is: ${DATASTORE[questionNumber].correctAnswer}</h3>
+    <p>${DATASTORE[questionNumber].funFact}</p>
+  </div>
+  <button class= "next">Next</button>`);
+  }
+  nextQuestion();
+}
 
-
-
-// function questionGenerator() {
-//   $('.quiz-display').append(`
-//     <h1>this is an appended question</h1>
-//     $(DATASTORE[questionNumber].question}</p>
-//     `);
-// }
-
-
-
-function startQuiz() {
-  $('.quiz-display').on('click', function (event) {
-    $('.quiz-display').remove();
-    quizQuestion();
-    submitHandle();
-    //$('.quiz-display').append(quizQuestion);
-    //$('.questionAnswerForm').css('display', 'block');
-    //$('.questionNumber').text(1);
+function nextQuestion() {
+  $(".next").click(function() {
+    if (questionNumber < DATASTORE.length - 1) {
+      questionUpdate();
+      displayQuestionCount();
+      clearDisplay();
+      generateQuestion();
+    } else {
+      clearDisplay();
+      hideScoreboard();
+      generateResult();
+    }
   });
 }
 
+function questionUpdate() {
+  questionNumber += 1;
+}
 
-function main() {
-  //init();  //click handlers
+function displayQuestionCount() {
+  $("#question").text(`Question: ${questionNumber + 1} / 10`);
+}
+
+function scoreUpdate() {
+  score++;
+  displayScore();
+}
+
+function displayScore() {
+  $("#score").text(` Score: ${score}`);
+}
+
+function generateResult() {
+  if (score >= 8) {
+    $(".quiz-display").append(`<header>
+    <h2>${resultsMessage.winHead}</h2>
+  </header><div class="quiz-text"><p>${resultsMessage.winText}</p>
+    <button class="reset-button">Play Again</button>
+  </div>`);
+  }
+
+  if (score < 8 && score >= 4) {
+    $(".quiz-display").append(`<header>
+    <h2>${resultsMessage.midHead}</h2>
+  </header>
+  <div class="quiz-text">
+    <p>${resultsMessage.midText}  
+    </p>
+    <button class="reset-button">Play Again</button>
+  </div>`);
+  }
+
+  if (score < 4) {
+    $(".quiz-display").append(`<header>
+    <h2>${resultsMessage.lossHead}</h2>
+  </header>
+  <div class="quiz-text">
+    <p>${resultsMessage.lossText}</p>
+    <button class="reset-button">Play Again</button>
+  </div>`);
+  }
+
+  restartQuiz();
+}
+
+function hideIntro() {
+  $(".intro-screen").css("display", "none");
+}
+
+function clearDisplay() {
+  $(".quiz-display").empty();
+}
+
+function showIntro() {
+  $(".intro-screen").css("display", "flex");
+}
+
+function showScoreboard() {
+  $(".scoreboard").css("display", "block");
+}
+function hideScoreboard() {
+  $(".scoreboard").css("display", "none");
+}
+
+function resetScore() {
+  score = 0;
+}
+
+function showQuiz() {
+  $(".quiz-display").css("display", "block");
+}
+
+function hideQuiz() {
+  $(".quiz-display").css("display", "none");
+}
+
+function resetQuestion() {
+  questionNumber = 0;
+}
+
+function restartQuiz() {
+  $(".reset-button").click(function() {
+    clearDisplay();
+    hideQuiz();
+    resetScore();
+    resetQuestion();
+    hideScoreboard();
+    showIntro();
+  });
+}
+
+function init() {
   startQuiz();
-
+  restartQuiz();
 }
 
-$(main);
-
-//startQuiz
-//generate function-display question?
-
-//template is displaying
-
-
+$(init);
