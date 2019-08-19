@@ -15,31 +15,16 @@
 <body>
   <nav class="logo-score">
 
-    <!-- <div class="logo"> -->
-
     <img class="logo" src="https://i.etsystatic.com/14565531/r/il/b03619/1229258222/il_794xN.1229258222_a0cx.jpg"
       alt="Appalachian Trail Logo">
 
+    <!-- <div aria-live="polite" class="scoreboard"> -->
+    <ul aria-live="polite" class="scoreboard">
+      <li id="score">Score: </li>
+      <li id="question">Question:></li>
+    </ul>
     <!-- </div> -->
-
-    <div aria-live="polite" class="scoreboard">
-      <ul>
-        <li id="score">Score: </li>
-        <li id="question">Question:></li>
-      </ul>
-    </div>
   </nav>
-
-  <!-- OLD SCOREBOARD
-    <div aria-live="polite" class="scoreboard">
-      <span>
-        <p id="score">Score:</p>
-      </span>
-      <span>
-        <p id="question">Question:</p>
-      </span>
-    </div>
-   -->
 
 
 
@@ -53,15 +38,14 @@
     <p>Do you have what it takes to make it to Maine?</p>
     <button id="quiz-start" class="button">Hit the trail!</button>
   </section>
-
-  <section class="quiz-display play-box hide" aria-live="polite">
+  <section class="quiz-display play-box" aria-live="polite">
   </section>
 
 
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
   <script src="datastore.js"></script>
-  <script src="functionstest"></script>
+  <script src="functionstest.js"></script>
 
 </body>
 
