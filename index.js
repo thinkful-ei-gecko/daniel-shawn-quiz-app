@@ -73,26 +73,26 @@ function quizQuestion() {
       <legend>${DATASTORE[questionNumber].question}</legend>
 
       <label class="answerOption1">
-        <input type="radio" value="${DATASTORE[questionNumber].answers[0]}" name="answer" required>
+        <input tabindex="0" "type="radio" value="${DATASTORE[questionNumber].answers[0]}" name="answer" required>
           <span>${DATASTORE[questionNumber].answers[0]}</span>
   </label>
 
         <label class="answerOption">
-          <input type="radio" value="${DATASTORE[questionNumber].answers[1]}" name="answer" required>
+          <input tabindex="1" type="radio" value="${DATASTORE[questionNumber].answers[1]}" name="answer" required>
             <span>${DATASTORE[questionNumber].answers[1]}</span>
   </label>
 
           <label class="answerOption">
-            <input type="radio" value="${DATASTORE[questionNumber].answers[2]}" name="answer" required>
+            <input tabindex="2" type="radio" value="${DATASTORE[questionNumber].answers[2]}" name="answer" required>
               <span>${DATASTORE[questionNumber].answers[2]}</span>
   </label>
 
             <label class="answerOption">
-              <input type="radio" value="${DATASTORE[questionNumber].answers[3]}" name="answer" required>
+              <input tabindex="3" type="radio" value="${DATASTORE[questionNumber].answers[3]}" name="answer" required>
                 <span>${DATASTORE[questionNumber].answers[3]}</span>
   </label>
 
-  <button type="submit" class="submitButton">Submit</button>
+  <button tab index = "4" type="submit" class="submitButton">Submit</button>
 
   </fieldset>
   </form>
