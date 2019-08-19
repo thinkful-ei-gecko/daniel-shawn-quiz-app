@@ -2,6 +2,7 @@
 
 let icon = 4;
 let alt = 3;
+let fact = 6
 
 
 const DATASTORE = [
@@ -13,10 +14,7 @@ const DATASTORE = [
       'Harper\'s Ferry, WV',
       'Pine Furnace State Park, PA'
     ],
-    correctAnswer: 'Harper\'s Ferry, WV',
-    image: URL(https://appalachiantrail.com/wp-content/uploads/2012/08/DSCN1259.jpg),
-    alt: 'Appalachian Trail Conservancy headquarters in Harper\'s Ferry, WV.',
-    fact: 
+    correctAnswer: 'Harper\'s Ferry, WV'
   },
   {
     question: 'The northbound endpoint of the trail is located in which state park?',
@@ -26,10 +24,7 @@ const DATASTORE = [
       'Wolfe Neck Woods State Park',
       'Two Lights State Park'
     ],
-    correctAnswer: 'Baxter State Park',
-    image: URL(https://upload.wikimedia.org/wikipedia/en/b/b8/Katahdin042101.JPG),
-    alt: alt,
-    fact: 
+    correctAnswer: 'Baxter State Park'
   },
   {
     question: 'What is the slang term for taking a "shortcut" down a side trail?',
@@ -39,10 +34,7 @@ const DATASTORE = [
       'Blue blazing',
       'Slackpacking'
     ],
-    correctAnswer: 'Blue blazing',
-    image: URL(https://c1.staticflickr.com/5/4518/38711562501_31769a8cd5_b.jpg)
-    alt: alt
-    fact: 
+    correctAnswer: 'Blue blazing'
   },
   {
     question: 'The home of the celebrated "Trail Days" festival',
@@ -52,9 +44,7 @@ const DATASTORE = [
       'Andover, ME',
       'Hiawassee, GA'
     ],
-    correctAnswer: 'Damascus, VA',
-    image: URL(),
-    alt: alt
+    correctAnswer: 'Damascus, VA'
   },
   {
     question: 'Who completed the first ever solo "thru-hike" of the Appalachian Trail?',
@@ -64,9 +54,7 @@ const DATASTORE = [
       '"Two Sticks"',
       'Earl Schaffer'
     ],
-    correctAnswer: 'Earl Schaffer',
-    image: URL(),
-    alt: alt
+    correctAnswer: 'Earl Schaffer'
   },
   {
     question: 'The first, and for many the last, outfitter encountered on the AT is located at...',
@@ -76,9 +64,7 @@ const DATASTORE = [
       'Neels Gap',
       'Grafton Notch'
     ],
-    correctAnswer: 'Neels Gap',
-    image: URL(),
-    alt: alt
+    correctAnswer: 'Neels Gap'
   },
   {
     question: 'The Appalachian Trail does not cross over which of the following peaks?',
@@ -88,9 +74,7 @@ const DATASTORE = [
       '"The Priest"',
       'Saddleback Mountain'
     ],
-    correctAnswer: 'Grandfather Mountain',
-    image: URL(),
-    alt: alt
+    correctAnswer: 'Grandfather Mountain'
   },
   {
     question: 'Kind souls who spend the hiking season providing services such as shuttles, food, and shelter to weary hikers are known affectionately as:',
@@ -100,9 +84,7 @@ const DATASTORE = [
       'Caretakers',
       'Ridge Runners'
     ],
-    correctAnswer: 'Trail Angels',
-    image: URL(),
-    alt: alt
+    correctAnswer: 'Trail Angels'
   },
   {
     question: 'Catching some kind of break on the trail, be it a free meal, a free stay, or in some cases an unexpected bottle of water is known as...',
@@ -112,9 +94,7 @@ const DATASTORE = [
       'Camp Karma',
       'Trail Magic'
     ],
-    correctAnswer: 'Trail Magic',
-    image: URL(),
-    alt: alt
+    correctAnswer: 'Trail Magic'
   },
   {
     question: 'The Appalachian Trail merges and runs concurrently with another major long-distance trail. What is the name of that trail?',
@@ -124,9 +104,7 @@ const DATASTORE = [
       'The Makaye Memorial Path',
       'The Long Trail'
     ],
-    correctAnswer: 'The Long Trail',
-    image: URL(),
-    alt: alt
+    correctAnswer: 'The Long Trail'
   },
 ];
 

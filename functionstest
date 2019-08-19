@@ -97,11 +97,11 @@ function generateFeedback(feedbk) {
   if (feedbk === true) {
     console.log('Yes, you are!');
     scoreUpdate(); //to increment the score
-    $('.quiz-display').append('eyy lmao <button class ="next">next</button>');
+    $('.quiz-display').append('<h2>Correct!</h2> <img src= "picture"><p>Feedback goes here</p><button class= "next">Next</button>');
   }
   if (feedbk === false) {
     console.log('WRONG');
-    $('.quiz-display').append('<p>This ain\'t it, chief.\'</p> <button class ="next">next</button>');
+    $('.quiz-display').append('<h2>Incorrect!</h2><img src= "picture"><p>Feedback goes here</p><button class= "next">Next</button>');
   }
   nextQuestion();
 }
@@ -109,12 +109,19 @@ function generateFeedback(feedbk) {
 function nextQuestion() {
   console.log('NEXT!!');
   $('.next').click(function() {
-  //event handler for next button on feedback view. 
-    questionUpdate();
-    displayQuestionCount();
-    //calls generate question.
-    clearDisplay(); 
-    generateQuestion();
+    if (questionNumber < DATASTORE.length-1) {
+    //event handler for next button on feedback view. 
+      questionUpdate();
+      displayQuestionCount();
+      //calls generate question.
+      clearDisplay(); 
+      generateQuestion();
+    }
+    else {
+      clearDisplay();
+      hideScoreboard();
+      generateResult();
+    }
   });
 }
 
@@ -142,8 +149,16 @@ function displayScore() {
 
 function generateResult() {
   console.log('wrap it up... ')
-  $('.quiz-display').append('<h1>END OF QUIZ</h1>');
-
+  if (score >= 8) {
+    $('.quiz-display').append('<h2>You are a real thru hiker!</h2><img src= " "><p>You made it to Maine...</p>\' <button class="reset-button">Play Again</button>');
+  }
+  if (score < 8 && score >= 4) {
+    $('.quiz-display').append('<h2>You are a section hiker.</h2><p>You\'ve got a few more hills to climb before you get your trail legs!.</p><button class="reset-button">Play Again</button>');
+  }
+  if (score < 4) {
+    $('.quiz-display').append('<h2>You are a day hiker. A real weekend warrior.</h2><p></p><button class="reset-button">Play Again</button>');
+  }
+  restartQuiz();
 }
 
 function hideIntro() {
@@ -162,7 +177,7 @@ function showScoreboard() {
   $('.scoreboard').css('display', 'block');
 }
 function hideScoreboard() {
-  $('.scoreboard').css('display', 'initial')
+  $('.scoreboard').css('display', 'none')
 }
 function resetScore () {
   console.log('reset score!')
@@ -189,7 +204,7 @@ function restartQuiz() {
     resetQuestion();
     hideScoreboard();
     showIntro();
-  })
+  });
 }
   
 //this might not be necessary. Might be able to use the quizstart. 
