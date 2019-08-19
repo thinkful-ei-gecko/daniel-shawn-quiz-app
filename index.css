@@ -6,6 +6,11 @@
   font-family: "Noto Serif KR", serif;
 }
 
+html {
+  min-height: 100%;
+  height: 100%;
+}
+
 .play-box header h1 {
   text-align: center;
   font-family: "Rye", cursive;
